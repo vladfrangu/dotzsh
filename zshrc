@@ -1,10 +1,20 @@
 # If you come from bash you might have to change your $PATH.
 #export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+#Exports full range of colors
+export TERM="xterm-256color"
+
+#Checks if oh-my-zsh is installed
+if [ ! -d $HOME/.zsh/.oh-my-zsh ]; then
+    printf "Installing oh-my-zsh...\n"
+    git clone --depth=1 git@github.com:robbyrussell/oh-my-zsh.git $HOME/.zsh/.oh-my-zsh &> /dev/null
+    git clone https://github.com/bhilburn/powerlevel9k.git $HOME/.zsh/.oh-my-zsh/custom/themes/powerlevel9k &> /dev/null
+    git clone git://github.com/zsh-users/zsh-autosuggestions $HOME/.zsh/.oh-my-zsh/custom/plugins/zsh-autosuggestions &> /dev/null
+    printf "Done installing oh-my-zsh\n"
+fi
 # Path to your oh-my-zsh installation.
 export ZSH_HOME=$HOME/.zsh
 export ZSH=$ZSH_HOME/.oh-my-zsh
-export TERM="xterm-256color"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
