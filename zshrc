@@ -92,8 +92,9 @@ alias ohmyzsh="mate $ZSH_HOME/.oh-my-zsh"
 addons=(.zshaddons)
 for addon in ${addons[@]}
 do
-    if [ -f $HOME/$addon ]; then
-        printf "Loading ZSH addon: $HOME/$addon\n"
-        source $HOME/$addon
+    ADDON=$HOME/$addon
+    if [ -f $ADDON ]; then
+        printf "Loading ZSH addon: $ADDON\n"
+        source $ADDON
     fi
 done
