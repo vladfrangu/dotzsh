@@ -4,9 +4,12 @@
 #Exports full range of colors
 export TERM="xterm-256color"
 
+blu="$(tput setaf 4)"
+norm="$(tput sgr0)"
+
 #Checks if oh-my-zsh is installed
 if [ ! -d $HOME/.zsh/.oh-my-zsh ]; then
-    printf "${BLUE}Installing oh-my-zsh...${NORMAL}\n"
+    printf "${blu}Installing oh-my-zsh...${norm}\n"
     git clone --depth=1 git@github.com:robbyrussell/oh-my-zsh.git $HOME/.zsh/.oh-my-zsh &> /dev/null
     CUSTOM=$HOME/.zsh/.oh-my-zsh/custom
     if [ ! -d $CUSTOM ]; then
@@ -15,8 +18,9 @@ if [ ! -d $HOME/.zsh/.oh-my-zsh ]; then
     git clone https://github.com/bhilburn/powerlevel9k.git $CUSTOM/themes/powerlevel9k &> /dev/null
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $CUSTOM/plugins/zsh-syntax-highlighting &> /dev/null
     git clone git://github.com/zsh-users/zsh-autosuggestions $CUSTOM/plugins/zsh-autosuggestions &> /dev/null
-    printf "${BLUE}Done installing oh-my-zsh${NORMAL}\n"
+    printf "${blu}Done installing oh-my-zsh${norm}\n"
 fi
+
 # Path to your oh-my-zsh installation.
 export ZSH_HOME=$HOME/.zsh
 export ZSH=$ZSH_HOME/.oh-my-zsh
@@ -117,7 +121,7 @@ for addon in ${addons[@]}
 do
     ADDON=$HOME/$addon
     if [ -f $ADDON ]; then
-        printf "${BLUE}Loading ZSH addon: $ADDON${NORMAL}\n"
+        printf "${blu}Loading ZSH addon: $ADDON${norm}\n"
         source $ADDON
     fi
 done
