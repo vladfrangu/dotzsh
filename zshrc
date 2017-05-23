@@ -6,11 +6,16 @@ export TERM="xterm-256color"
 
 #Checks if oh-my-zsh is installed
 if [ ! -d $HOME/.zsh/.oh-my-zsh ]; then
-    printf "Installing oh-my-zsh...\n"
+    printf "${BLUE}Installing oh-my-zsh...${NORMAL}\n"
     git clone --depth=1 git@github.com:robbyrussell/oh-my-zsh.git $HOME/.zsh/.oh-my-zsh &> /dev/null
-    git clone https://github.com/bhilburn/powerlevel9k.git $HOME/.zsh/.oh-my-zsh/custom/themes/powerlevel9k &> /dev/null
-    git clone git://github.com/zsh-users/zsh-autosuggestions $HOME/.zsh/.oh-my-zsh/custom/plugins/zsh-autosuggestions &> /dev/null
-    printf "Done installing oh-my-zsh\n"
+    CUSTOM=$HOME/.zsh/.oh-my-zsh/custom
+    if [ ! -d $CUSTOM ]; then
+        mkdir -p $CUSTOM
+    fi
+    git clone https://github.com/bhilburn/powerlevel9k.git $CUSTOM/themes/powerlevel9k &> /dev/null
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $CUSTOM/plugins/zsh-syntax-highlighting &> /dev/null
+    git clone git://github.com/zsh-users/zsh-autosuggestions $CUSTOM/plugins/zsh-autosuggestions &> /dev/null
+    printf "${BLUE}Done installing oh-my-zsh${NORMAL}\n"
 fi
 # Path to your oh-my-zsh installation.
 export ZSH_HOME=$HOME/.zsh
@@ -20,7 +25,6 @@ export ZSH=$ZSH_HOME/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator virtualenv ram time)
 
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
@@ -64,7 +68,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sudo history rsync zsh-autosuggestions)
+plugins=(git sudo rsync zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -94,8 +98,17 @@ export EDITOR='vim'
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+#Plugin and theme setup
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator virtualenv ram time)
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=("fg=6")
+ZSH__AUTOSUGGEST_STRATEGY=match_prev_cmd
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+ZSH_AUTOSUGGEST_USE_ASYNC=zsh
+
+
 # Example aliases
-alias zshconfig="mate $HOME/.zshrc"
+alias zshconfig="$EDITOR $ZSH_HOME/zshrc"
 alias ohmyzsh="mate $ZSH_HOME/.oh-my-zsh"
 
 #.zshrc addons
@@ -104,7 +117,7 @@ for addon in ${addons[@]}
 do
     ADDON=$HOME/$addon
     if [ -f $ADDON ]; then
-        printf "Loading ZSH addon: $ADDON\n"
+        printf "${BLUE}Loading ZSH addon: $ADDON${NORMAL}\n"
         source $ADDON
     fi
 done
