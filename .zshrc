@@ -14,17 +14,16 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH=$ZDOTDIR/.oh-my-zsh
 
+# Would you like to use another custom folder than $ZSH/custom?
+ZSH_CUSTOM=$ZDOTDIR/custom
+
 #Checks if oh-my-zsh is installed
 if [ ! -d $ZSH ]; then
     printf "${blu}Installing oh-my-zsh...${norm}\n"
     git clone --depth=1 git@github.com:robbyrussell/oh-my-zsh.git $ZSH &> /dev/null
-    CUSTOM=$ZDOTDIR/custom
-    if [ ! -d $CUSTOM ]; then
-        mkdir -p $CUSTOM
-    fi
-    git clone https://github.com/bhilburn/powerlevel9k.git $CUSTOM/themes/powerlevel9k &> /dev/null
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $CUSTOM/plugins/zsh-syntax-highlighting &> /dev/null
-    git clone git://github.com/zsh-users/zsh-autosuggestions $CUSTOM/plugins/zsh-autosuggestions &> /dev/null
+    git clone https://github.com/bhilburn/powerlevel9k.git $ZSH_CUSTOM/themes/powerlevel9k &> /dev/null
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting &> /dev/null
+    git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions &> /dev/null
     printf "${blu}Done installing oh-my-zsh${norm}\n"
 fi
 
@@ -67,9 +66,6 @@ ENABLE_CORRECTION="true"
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
