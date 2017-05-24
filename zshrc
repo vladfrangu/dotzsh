@@ -110,10 +110,10 @@ ZSH__AUTOSUGGEST_STRATEGY=match_prev_cmd
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_USE_ASYNC=zsh
 
-
-# Example aliases
+#Aliases
 alias zshconfig="$EDITOR $ZSH_HOME/zshrc"
-alias ohmyzsh="mate $ZSH_HOME/.oh-my-zsh"
+alias ohmyzsh="$EDITOR $ZSH"
+
 
 #.zshrc addons
 addons=(.zshaddons)
