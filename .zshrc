@@ -3,15 +3,22 @@
 
 #Exports full range of colors
 export TERM="xterm-256color"
-
 blu="$(tput setaf 4)"
 norm="$(tput sgr0)"
 
+#Checks for $ZDOTDIR
+if [[ -z $ZDOTDIR ]]; then
+    export ZDOTDIR=$HOME
+fi
+
+# Path to your oh-my-zsh installation.
+export ZSH=$ZDOTDIR/.oh-my-zsh
+
 #Checks if oh-my-zsh is installed
-if [ ! -d $HOME/.zsh/.oh-my-zsh ]; then
+if [ ! -d $ZSH ]; then
     printf "${blu}Installing oh-my-zsh...${norm}\n"
-    git clone --depth=1 git@github.com:robbyrussell/oh-my-zsh.git $HOME/.zsh/.oh-my-zsh &> /dev/null
-    CUSTOM=$HOME/.zsh/.oh-my-zsh/custom
+    git clone --depth=1 git@github.com:robbyrussell/oh-my-zsh.git $ZSH &> /dev/null
+    CUSTOM=$ZDOTDIR/custom
     if [ ! -d $CUSTOM ]; then
         mkdir -p $CUSTOM
     fi
@@ -20,10 +27,6 @@ if [ ! -d $HOME/.zsh/.oh-my-zsh ]; then
     git clone git://github.com/zsh-users/zsh-autosuggestions $CUSTOM/plugins/zsh-autosuggestions &> /dev/null
     printf "${blu}Done installing oh-my-zsh${norm}\n"
 fi
-
-# Path to your oh-my-zsh installation.
-export ZSH_HOME=$HOME/.zsh
-export ZSH=$ZSH_HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -111,7 +114,7 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_USE_ASYNC=zsh
 
 #Aliases
-alias zshconfig="$EDITOR $ZSH_HOME/zshrc"
+alias zshconfig="$EDITOR $ZDOTDIR/zshrc"
 alias ohmyzsh="$EDITOR $ZSH"
 
 
@@ -119,7 +122,7 @@ alias ohmyzsh="$EDITOR $ZSH"
 addons=(.zshaddons)
 for addon in ${addons[@]}
 do
-    ADDON=$HOME/$addon
+    ADDON=$Z/$addon
     if [ -f $ADDON ]; then
         printf "${blu}Loading ZSH addon: $ADDON${norm}\n"
         source $ADDON
