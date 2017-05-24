@@ -6,9 +6,14 @@ export TERM="xterm-256color"
 blu="$(tput setaf 4)"
 norm="$(tput sgr0)"
 
+#Working Directory
+cd $(dirname -- "${0}")
+BASE_DIR=$(pwd -L)
+cd $PWD
+
 #Checks for $ZDOTDIR
 if [[ -z $ZDOTDIR ]]; then
-    export ZDOTDIR=$HOME
+    export ZDOTDIR=$BASE_DIR
 fi
 
 # Path to your oh-my-zsh installation.
@@ -105,20 +110,17 @@ export EDITOR='vim'
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator virtualenv ram time)
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=("fg=6")
-ZSH__AUTOSUGGEST_STRATEGY=match_prev_cmd
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-ZSH_AUTOSUGGEST_USE_ASYNC=zsh
 
 #Aliases
-alias zshconfig="$EDITOR $ZDOTDIR/zshrc"
+alias zshconfig="$EDITOR $ZDOTDIR/.zshrc"
 alias ohmyzsh="$EDITOR $ZSH"
-
 
 #.zshrc addons
 addons=(.zshaddons)
 for addon in ${addons[@]}
 do
-    ADDON=$Z/$addon
+    ADDON=$ZDOTDIR/$addon
     if [ -f $ADDON ]; then
         printf "${blu}Loading ZSH addon: $ADDON${norm}\n"
         source $ADDON
