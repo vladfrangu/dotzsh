@@ -25,10 +25,10 @@ ZSH_CUSTOM=$ZDOTDIR/custom
 #Checks if oh-my-zsh is installed
 if [ ! -d $ZSH ]; then
     printf "${blu}Installing oh-my-zsh...${norm}\n"
-    git clone --depth=1 git@github.com:robbyrussell/oh-my-zsh.git $ZSH &> /dev/null
+    git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git $ZSH &> /dev/null
     git clone https://github.com/bhilburn/powerlevel9k.git $ZSH_CUSTOM/themes/powerlevel9k &> /dev/null
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting &> /dev/null
-    git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions &> /dev/null
+    git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions &> /dev/null
     printf "${blu}Done installing oh-my-zsh${norm}\n"
 fi
 
