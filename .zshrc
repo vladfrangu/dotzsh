@@ -6,14 +6,9 @@ export TERM="xterm-256color"
 blu="$(tput setaf 4)"
 norm="$(tput sgr0)"
 
-#Working Directory
-cd $(dirname -- "${0}")
-BASE_DIR=$(pwd -L)
-cd $PWD
-
 #Checks for $ZDOTDIR
 if [[ -z $ZDOTDIR ]]; then
-    export ZDOTDIR=$BASE_DIR
+    export ZDOTDIR=$HOME
 fi
 
 # Path to your oh-my-zsh installation.
