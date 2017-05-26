@@ -30,6 +30,7 @@ fi
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+POWERLEVEL9K_MODE="awesome-patched"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -102,7 +103,8 @@ export EDITOR='vim'
 # For a full list of active aliases, run `alias`.
 #
 #Plugin and theme setup
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator virtualenv ram time)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir_writable dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv ram load disk_usage)
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=("fg=6")
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
