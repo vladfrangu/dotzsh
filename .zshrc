@@ -102,8 +102,11 @@ export EDITOR='vim'
 # For a full list of active aliases, run `alias`.
 #
 #Plugin and theme setup
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir_writable context dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status rbenv virtualenv ram time)
+POWERLEVEL9K_STATUS_VERBOSE=false
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status dir_writable rbenv virtualenv ram time)
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=("fg=6")
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
