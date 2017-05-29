@@ -2,7 +2,11 @@
 #export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 #Exports full range of colors
-export TERM="xterm-256color"
+if [ -z $TMUX ];then
+    export TERM="xterm-256color"
+else
+    export TERM="screen-256color"
+fi
 blu="$(tput setaf 4)"
 norm="$(tput sgr0)"
 
