@@ -1,14 +1,19 @@
 # If you come from bash you might have to change your $PATH.
 #export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-#Exports full range of colors
-blu="$(tput setaf 4)"
-norm="$(tput sgr0)"
-
 #Checks for $ZDOTDIR
 if [[ -z $ZDOTDIR ]]; then
     export ZDOTDIR=$HOME
 fi
+
+#Imports Extra settings
+if [ -f $ZDOTDIR/.zextrasettings ]; then
+    source $ZDOTDIR/.zextrasettings
+fi
+
+#Exports full range of colors
+blu="$(tput setaf 4)"
+norm="$(tput sgr0)"
 
 # Path to your oh-my-zsh installation.
 export ZSH=$ZDOTDIR/.oh-my-zsh
