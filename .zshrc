@@ -7,8 +7,8 @@ if [[ -z $ZDOTDIR ]]; then
 fi
 
 #Imports Extra settings
-if [ -f $ZDOTDIR/.zextrasettings ]; then
-    source $ZDOTDIR/.zextrasettings
+if [ -f $ZDOTDIR/.zshextrasettings ]; then
+    source $ZDOTDIR/.zshextrasettings
 fi
 
 #Exports full range of colors
