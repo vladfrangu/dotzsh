@@ -1,7 +1,6 @@
 #Ignores everything
 *
 
-
 #ZSH Files
 !.zshrc
 !.zshenv
