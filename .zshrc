@@ -115,12 +115,10 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=("fg=6")
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
-ZSH_UPDATE="cd $ZDOTDIR && git pull origin master && cd $OLDPWD"
 
 #Aliases
 alias zshconfig="$EDITOR $ZDOTDIR/.zshrc"
 alias ohmyzsh="$EDITOR $ZSH"
-alias zsh_update="$ZSH_UPDATE"
 
 #.zshrc addons
 addons=(.zshaddons)
@@ -132,3 +130,7 @@ do
         source $ADDON
     fi
 done
+
+#Adds auto upgrade system
+source $ZDOTDIR/zshupdate
+
