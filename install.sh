@@ -4,4 +4,4 @@ rm -rf $HOME/.zsh* && rm -rf $HOME/.zcompdump*
 git clone https://github.com/ArturoGuerra/dotzsh.git $HOME/.zsh
 echo "export ZDOTDIR=\$HOME/.zsh" > $HOME/.zshenv
 echo "source \$ZDOTDIR/.zshenv" >> $HOME/.zshenv
-chsh -s /bin/zsh
+chsh -s $(which zsh)
