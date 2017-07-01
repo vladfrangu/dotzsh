@@ -17,7 +17,7 @@ function _update_time() {
     echo "LAST_TIME=$(_current_time)" > $ZDOTDIR/.zshupdate
 }
 
-function updatezsh() {
+function upgrade_zsh() {
     cd $ZDOTDIR
     git pull origin master
     cd $OLDPWD
@@ -31,7 +31,7 @@ if [ -f $ZDOTDIR/.zshupdate ]; then
     fi
     _diff=$(($(_current_time) - $LAST_TIME))
     if [ $_diff -gt $target_days ]; then
-        updatezsh
+        upgrade_zsh
     fi
 else
     _update_time
