@@ -3,6 +3,7 @@
 
 #ZSH Files
 !bin
+!bin/*
 !.zshrc
 !.zshenv
 !.zlogin
