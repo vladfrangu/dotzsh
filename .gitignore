@@ -2,6 +2,7 @@
 *
 
 #ZSH Files
+!bin
 !.zshrc
 !.zshenv
 !.zlogin
