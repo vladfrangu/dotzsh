@@ -1,3 +1,6 @@
+# This fixes oh-my-zsh
+ZSH_DISABLE_COMPFIX=true
+
 # This sets the users umask
 umask 0002
 
