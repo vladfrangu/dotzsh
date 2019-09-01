@@ -5,4 +5,5 @@ ZSH_DISABLE_COMPFIX=true
 umask 0002
 
 # set PATH so it includes user's private bin directories
-PATH="$HOME/bin:$HOME/.local/bin:$HOME/.zsh/bin:$PATH"
+export PATH=$PATH:$HOME/bin:$HOME/.local/bin:$HOME/.zsh/bin:/usr/local/go/bin/go
+export GOPATH=$HOME/go

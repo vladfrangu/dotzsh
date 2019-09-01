@@ -2,8 +2,8 @@
 *
 
 #ZSH Files
-!bin
 !bin/*
+!configs/*
 !.zshrc
 !.zshenv
 !.zlogin
@@ -11,4 +11,5 @@
 !.zprofile
 !README.md
 !.gitignore
-!zshupdate
+!.zshupdate
+!.setup

@@ -1,16 +1,3 @@
-# If you come from bash you might have to change your $PATH.
-#export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-#Checks for $ZDOTDIR
-if [[ -z $ZDOTDIR ]]; then
-    export ZDOTDIR=$HOME
-fi
-
-#Imports Extra settings
-if [ -f $ZDOTDIR/.zshextrasettings ]; then
-    source $ZDOTDIR/.zshextrasettings
-fi
-
 #Exports full range of colors
 blu="$(tput setaf 4)"
 norm="$(tput sgr0)"
@@ -25,7 +12,7 @@ ZSH_CUSTOM=$ZDOTDIR/custom
 if [ ! -d $ZSH ]; then
     printf "${blu}Installing oh-my-zsh...${norm}\n"
     git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git $ZSH &> /dev/null
-    git clone https://github.com/bhilburn/powerlevel9k.git $ZSH_CUSTOM/themes/powerlevel9k &> /dev/null
+    git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k &> /dev/null
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting &> /dev/null
     git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions &> /dev/null
     printf "${blu}Done installing oh-my-zsh${norm}\n"
@@ -34,7 +21,7 @@ fi
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
@@ -106,12 +93,6 @@ export EDITOR='vim'
 # For a full list of active aliases, run `alias`.
 #
 #Plugin and theme setup
-POWERLEVEL9K_STATUS_VERBOSE=false
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status dir_writable rbenv virtualenv ram time)
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
-
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=("fg=6")
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
@@ -119,6 +100,7 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 #Aliases
 alias zshconfig="$EDITOR $ZDOTDIR/.zshrc"
 alias ohmyzsh="$EDITOR $ZSH"
+alias zreconf="source $ZDOTDIR/.setup"
 
 #.zshrc addons
 addons=(.zshaddons)
@@ -132,5 +114,10 @@ do
 done
 
 #Adds auto upgrade system
-source $ZDOTDIR/zshupdate
+source $ZDOTDIR/.zshupdate
 
+# Setup
+[[ ! -f ~/.zsh/.p10k.zsh ]] && source $ZDOTDIR/.zshsetup
+
+# To customize prompt, run `p10k configure` or edit ~/.zsh/.p10k.zsh.
+[[ -f ~/.zsh/.p10k.zsh ]] && source ~/.zsh/.p10k.zsh
