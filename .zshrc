@@ -114,7 +114,7 @@ do
 done
 
 #Adds auto upgrade system
-source $ZDOTDIR/.zshupdate
+source $ZDOTDIR/.zshupgrade
 
 # Setup
 [[ ! -f ~/.zsh/.p10k.zsh ]] && source $ZDOTDIR/.zshsetup
