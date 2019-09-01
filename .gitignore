@@ -2,7 +2,7 @@
 *
 
 #ZSH Files
-!bin/*
+!bin/.*
 !configs/*
 !.zshrc
 !.zshenv
