@@ -101,7 +101,7 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 alias zshconfig="$EDITOR $ZDOTDIR/.zshrc"
 alias ohmyzsh="$EDITOR $ZSH"
 alias zreconf="source $ZDOTDIR/.setup"
-
+alias zreset="cd ~ && sh -c '$(curl -fsSL https://raw.githubusercontent.com/ArturoGuerra/dotzsh/master/install.sh)'"
 #.zshrc addons
 addons=(.zshaddons)
 for addon in ${addons[@]}
