@@ -64,6 +64,11 @@ ENABLE_CORRECTION="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git sudo rsync zsh-autosuggestions zsh-syntax-highlighting wd)
 
+extra_plugins=$ZDOTDIR/.zshplugins
+if [ -f $extra_plugins ];  then
+    source $extra_plugins
+fi
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -96,22 +101,18 @@ export EDITOR='vim'
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=("fg=6")
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
+#.zshrc addons
+addon=$ZDOTDIR/.zshaddons
+if [ -f $addon ]; then
+    source $addon
+fi
 
 #Aliases
 alias zshconfig="$EDITOR $ZDOTDIR/.zshrc"
 alias ohmyzsh="$EDITOR $ZSH"
 alias zreconf="source $ZDOTDIR/.setup"
 alias zreset="cd ~ && sh -c '$(curl -fsSL https://raw.githubusercontent.com/ArturoGuerra/dotzsh/master/install.sh)'"
-#.zshrc addons
-addons=(.zshaddons)
-for addon in ${addons[@]}
-do
-    ADDON=$ZDOTDIR/$addon
-    if [ -f $ADDON ]; then
-        printf "${blu}Loading ZSH addon: $ADDON${norm}\n"
-        source $ADDON
-    fi
-done
+
 
 #Adds auto upgrade system
 source $ZDOTDIR/.zshupgrade
