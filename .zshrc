@@ -107,6 +107,8 @@ if [ -f $addon ]; then
     source $addon
 fi
 
+source $ZDOTDIR/.zsh_kubeconfig
+
 #Aliases
 alias zshconfig="$EDITOR $ZDOTDIR/.zshrc"
 alias ohmyzsh="$EDITOR $ZSH"
