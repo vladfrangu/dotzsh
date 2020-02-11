@@ -112,7 +112,7 @@ source $ZDOTDIR/.zsh_kubeconfig
 #Aliases
 alias zshconfig="$EDITOR $ZDOTDIR/.zshrc"
 alias ohmyzsh="$EDITOR $ZSH"
-alias zreconf="source $ZDOTDIR/.setup"
+alias zreconf="source $ZDOTDIR/.zshsetup"
 alias zreset="cd ~ && sh -c '$(curl -fsSL https://raw.githubusercontent.com/ArturoGuerra/dotzsh/master/install.sh)'"
 
 
