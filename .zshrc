@@ -69,7 +69,26 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sudo rsync zsh-autosuggestions zsh-syntax-highlighting wd)
+plugins=(
+    cargo
+    docker
+    docker-compose
+    encode64
+    flutter
+    gcloud
+    git
+    golang
+    gradle
+    npm
+    nvm
+    osx
+    rust
+    rustup
+    sudo
+    wd
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+)
 
 extra_plugins=$ZDOTDIR/.zshplugins
 if [ -f $extra_plugins ];  then
@@ -131,3 +150,14 @@ source $ZDOTDIR/.zshupgrade
 
 # To customize prompt, run `p10k configure` or edit ~/.zsh/.p10k.zsh.
 [[ -f ~/.zsh/.p10k.zsh ]] && source ~/.zsh/.p10k.zsh
+
+# Vlad:start
+
+## Cargo
+source "$HOME/.cargo/env"
+## Jabba
+[ -s "/Users/vlad/.jabba/jabba.sh" ] && source "/Users/vlad/.jabba/jabba.sh"
+## Docker
+eval $(docker-machine env)
+
+# Vlad:end
