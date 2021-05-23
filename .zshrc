@@ -156,7 +156,7 @@ source $ZDOTDIR/.zshupgrade
 ## Cargo
 source "$HOME/.cargo/env"
 ## Jabba
-[ -s "/Users/vlad/.jabba/jabba.sh" ] && source "/Users/vlad/.jabba/jabba.sh"
+[ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
 ## Docker
 eval $(docker-machine env)
 
